@@ -132,7 +132,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="text-xs uppercase tracking-widest text-zinc-500 font-bold mb-1">Visit Office</p>
-                      <p className="text-lg font-medium">Nairobi, Kilimani Business Center</p>
+                      <p className="text-lg font-medium">Kiambu Road, Feruzi Towers, 6th Floor, Wing A–D</p>
                     </div>
                   </div>
                 </address>

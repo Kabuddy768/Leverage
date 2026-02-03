@@ -38,15 +38,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || currentPage !== 'home' ? 'bg-zinc-950/80 backdrop-blur-lg border-b border-white/10 py-3' : 'bg-transparent py-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div 
-            className="flex items-center gap-2 cursor-pointer" 
+          <div
+            className="flex items-center gap-2 cursor-pointer"
             onClick={() => onNavigate('home')}
           >
-            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-              <span className="text-zinc-950 font-black text-xl">O</span>
-            </div>
+            <img src="/logos/Logo1.png" alt="Office Choice Solutions" className="w-10 h-10 object-contain" />
             <span className="text-xl font-bold tracking-tight hidden sm:block">
-              Office Choice <span className="text-zinc-400 font-light">Solutions</span>
+              Office Choice <span className="text-zinc-400 font-light">Solutions Ltd</span>
             </span>
           </div>
 
@@ -61,13 +59,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                 {link.name}
               </button>
             ))}
-            <button 
+            {/* <button
               onClick={() => onNavigate('contact')}
               className="bg-white text-zinc-950 px-5 py-2 rounded-full text-sm font-semibold hover:bg-zinc-200 transition-all flex items-center gap-2"
             >
               Get Started
               <ChevronRight className="w-4 h-4" />
-            </button>
+            </button> */}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -94,7 +92,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
               {link.name}
             </button>
           ))}
-          <button 
+          <button
             onClick={() => handleLinkClick({ action: () => onNavigate('contact') })}
             className="w-full bg-white text-zinc-950 px-5 py-3 rounded-xl text-center font-bold"
           >

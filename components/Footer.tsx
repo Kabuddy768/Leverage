@@ -14,13 +14,11 @@ export default function Footer({ onNavigate }: FooterProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
-            <div 
+            <div
               className="flex items-center gap-2 cursor-pointer"
               onClick={() => onNavigate('home')}
             >
-              <div className="w-8 h-8 bg-white rounded flex items-center justify-center">
-                <span className="text-zinc-950 font-black">O</span>
-              </div>
+              <img src="/logos/Logo1.png" alt="Office Choice Solutions" className="w-12 h-12 object-contain" />
               <span className="text-xl font-bold tracking-tight">Office Choice Solutions</span>
             </div>
             <p className="text-zinc-400 text-sm leading-relaxed">
@@ -66,7 +64,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             <ul className="space-y-4 text-sm text-zinc-400">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-1 flex-shrink-0 text-white" />
-                <span>Nairobi, Kenya<br />Kilimani Business Center</span>
+                <span>Kiambu Road, Feruzi Towers<br />6th Floor, Wing A–D</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-white" />
