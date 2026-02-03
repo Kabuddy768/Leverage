@@ -43,7 +43,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
             onClick={() => onNavigate('home')}
           >
             <img src="/logos/Logo1.png" alt="Office Choice Solutions" className="w-10 h-10 object-contain" />
-            <span className="text-xl font-bold tracking-tight hidden sm:block">
+            <span className="text-xl font-bold tracking-tight block">
               Office Choice <span className="text-zinc-400 font-light">Solutions Ltd</span>
             </span>
           </div>
