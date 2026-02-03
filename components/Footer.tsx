@@ -2,7 +2,11 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Linkedin, Facebook, Twitter } from 'lucide-react';
 
-export default function Footer() {
+interface FooterProps {
+  onNavigate: (page: 'home' | 'products' | 'about' | 'contact') => void;
+}
+
+export default function Footer({ onNavigate }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -10,7 +14,10 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
-            <div className="flex items-center gap-2">
+            <div 
+              className="flex items-center gap-2 cursor-pointer"
+              onClick={() => onNavigate('home')}
+            >
               <div className="w-8 h-8 bg-white rounded flex items-center justify-center">
                 <span className="text-zinc-950 font-black">O</span>
               </div>
@@ -35,19 +42,19 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-zinc-500">Solutions</h4>
             <ul className="space-y-4 text-sm text-zinc-400">
-              <li><a href="#" className="hover:text-white transition-colors">Palladium Accounting</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">IQ Retail</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Xact ERP</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Sage 200</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Medeiplus</a></li>
+              <li><button onClick={() => onNavigate('products')} className="hover:text-white transition-colors">Palladium Accounting</button></li>
+              <li><button onClick={() => onNavigate('products')} className="hover:text-white transition-colors">IQ Retail</button></li>
+              <li><button onClick={() => onNavigate('products')} className="hover:text-white transition-colors">Xact ERP</button></li>
+              <li><button onClick={() => onNavigate('products')} className="hover:text-white transition-colors">Sage 200</button></li>
+              <li><button onClick={() => onNavigate('products')} className="hover:text-white transition-colors">Medeiplus</button></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-zinc-500">Company</h4>
             <ul className="space-y-4 text-sm text-zinc-400">
-              <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Implementation Team</a></li>
+              <li><button onClick={() => onNavigate('about')} className="hover:text-white transition-colors">About Us</button></li>
+              <li><button onClick={() => onNavigate('home')} className="hover:text-white transition-colors">Implementation Team</button></li>
               <li><a href="#" className="hover:text-white transition-colors">Partnerships</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Client Cases</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
@@ -63,11 +70,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-white" />
-                <span>+254 (0) 700 000 000</span>
+                <a href="tel:+254721123536" className="hover:text-white">+254 721 123 536</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-white" />
-                <span>info@officechoice.co.ke</span>
+                <a href="mailto:info@officechoicesolutions.co.ke" className="hover:text-white">info@officechoicesolutions.co.ke</a>
               </li>
             </ul>
           </div>

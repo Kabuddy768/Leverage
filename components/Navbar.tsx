@@ -2,7 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronRight } from 'lucide-react';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onNavigate: (page: 'home' | 'products' | 'about' | 'contact') => void;
+  currentPage: 'home' | 'products' | 'about' | 'contact';
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -15,18 +20,28 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Products', href: '#products' },
-    { name: 'About', href: '#about' },
-    { name: 'Partners', href: '#partners' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', action: () => onNavigate('home'), id: 'home' },
+    { name: 'Products', action: () => onNavigate('products'), id: 'products' },
+    { name: 'About', action: () => onNavigate('about'), id: 'about' },
+    { name: 'Partners', href: '#partners', id: 'partners' },
+    { name: 'Contact', action: () => onNavigate('contact'), id: 'contact' },
   ];
 
+  const handleLinkClick = (link: any) => {
+    if (link.action) {
+      link.action();
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-zinc-950/80 backdrop-blur-lg border-b border-white/10 py-3' : 'bg-transparent py-5'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || currentPage !== 'home' ? 'bg-zinc-950/80 backdrop-blur-lg border-b border-white/10 py-3' : 'bg-transparent py-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div className="flex items-center gap-2">
+          <div 
+            className="flex items-center gap-2 cursor-pointer" 
+            onClick={() => onNavigate('home')}
+          >
             <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
               <span className="text-zinc-950 font-black text-xl">O</span>
             </div>
@@ -38,15 +53,18 @@ const Navbar: React.FC = () => {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.name}
-                href={link.href}
-                className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
+                onClick={() => handleLinkClick(link)}
+                className={`text-sm font-medium transition-colors ${currentPage === link.id ? 'text-white' : 'text-zinc-400 hover:text-white'}`}
               >
                 {link.name}
-              </a>
+              </button>
             ))}
-            <button className="bg-white text-zinc-950 px-5 py-2 rounded-full text-sm font-semibold hover:bg-zinc-200 transition-all flex items-center gap-2">
+            <button 
+              onClick={() => onNavigate('contact')}
+              className="bg-white text-zinc-950 px-5 py-2 rounded-full text-sm font-semibold hover:bg-zinc-200 transition-all flex items-center gap-2"
+            >
               Get Started
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -68,16 +86,18 @@ const Navbar: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-zinc-950 border-b border-white/10 p-4 space-y-4">
           {navLinks.map((link) => (
-            <a
+            <button
               key={link.name}
-              href={link.href}
-              className="block text-lg font-medium text-zinc-400 hover:text-white"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => handleLinkClick(link)}
+              className={`block w-full text-left text-lg font-medium ${currentPage === link.id ? 'text-white' : 'text-zinc-400 hover:text-white'}`}
             >
               {link.name}
-            </a>
+            </button>
           ))}
-          <button className="w-full bg-white text-zinc-950 px-5 py-3 rounded-xl text-center font-bold">
+          <button 
+            onClick={() => handleLinkClick({ action: () => onNavigate('contact') })}
+            className="w-full bg-white text-zinc-950 px-5 py-3 rounded-xl text-center font-bold"
+          >
             Get Started
           </button>
         </div>
