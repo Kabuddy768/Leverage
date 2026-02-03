@@ -3,7 +3,6 @@ import { forwardRef, useImperativeHandle, useEffect, useRef, useMemo, FC, ReactN
 import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { PerspectiveCamera } from '@react-three/drei';
-import { degToRad } from 'three/src/math/MathUtils.js';
 
 // Component aliases to fix JSX.IntrinsicElements errors for Three.js elements
 const Group = 'group' as any;
@@ -256,7 +255,7 @@ const Beams: FC<BeamsProps> = ({
 
   return (
     <CanvasWrapper>
-      <Group rotation={[0, 0, degToRad(rotation)]}>
+      <Group rotation={[0, 0, THREE.MathUtils.degToRad(rotation)]}>
         <PlaneNoise ref={meshRef} material={beamMaterial} count={beamNumber} width={beamWidth} height={beamHeight} />
         <DirLight color={lightColor} position={[0, 3, 10]} />
       </Group>
