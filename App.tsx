@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -9,9 +8,14 @@ import Footer from './components/Footer';
 import ProductsPage from './components/ProductsPage';
 import AboutPage from './components/AboutPage';
 import ContactPage from './components/ContactPage';
+import Palladium from './components/Palladium';
+import IQRetail from './components/IQRetail';
+import Sage200 from './components/Sage200';
+import XactERP from './components/XactERP';
+import Medeiplus from './components/Medeiplus';
 
 const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'products' | 'about' | 'contact'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'products' | 'about' | 'contact' | 'palladium' | 'iqRetail' | 'sage200' | 'xactErp' | 'medeiplus'>('home');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,18 +24,28 @@ const App: React.FC = () => {
   const renderContent = () => {
     switch (currentPage) {
       case 'products':
-        return <ProductsPage />;
+        return <ProductsPage onNavigate={setCurrentPage} />;
       case 'about':
         return <AboutPage />;
       case 'contact':
         return <ContactPage />;
+      case 'palladium':
+        return <Palladium onBack={() => setCurrentPage('products')} />;
+      case 'iqRetail':
+        return <IQRetail onBack={() => setCurrentPage('products')} />;
+      case 'sage200':
+        return <Sage200 onBack={() => setCurrentPage('products')} />;
+      case 'xactErp':
+        return <XactERP onBack={() => setCurrentPage('products')} />;
+      case 'medeiplus':
+        return <Medeiplus onBack={() => setCurrentPage('products')} />;
       default:
         return (
           <div className="animate-fade-in">
             <section id="home">
               <Hero />
             </section>
-            
+
             <section id="products-preview" className="py-24">
               <Products onExplore={() => setCurrentPage('products')} />
             </section>
@@ -51,11 +65,11 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-zinc-950 text-white selection:bg-white/20">
       <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
-      
+
       <main className="transition-opacity duration-500">
         {renderContent()}
       </main>
-      
+
       <Footer onNavigate={setCurrentPage} />
     </div>
   );

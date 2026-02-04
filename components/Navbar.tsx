@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronRight } from 'lucide-react';
 
 interface NavbarProps {
-  onNavigate: (page: 'home' | 'products' | 'about' | 'contact') => void;
-  currentPage: 'home' | 'products' | 'about' | 'contact';
+  onNavigate: (page: 'home' | 'products' | 'about' | 'contact' | 'palladium' | 'iqRetail' | 'sage200' | 'xactErp' | 'medeiplus') => void;
+  currentPage: 'home' | 'products' | 'about' | 'contact' | 'palladium' | 'iqRetail' | 'sage200' | 'xactErp' | 'medeiplus';
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {

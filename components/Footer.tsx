@@ -3,7 +3,7 @@ import React from 'react';
 import { Mail, Phone, MapPin, Linkedin, Facebook, Twitter } from 'lucide-react';
 
 interface FooterProps {
-  onNavigate: (page: 'home' | 'products' | 'about' | 'contact') => void;
+  onNavigate: (page: 'home' | 'products' | 'about' | 'contact' | 'palladium' | 'iqRetail' | 'sage200' | 'xactErp' | 'medeiplus') => void;
 }
 
 export default function Footer({ onNavigate }: FooterProps) {
