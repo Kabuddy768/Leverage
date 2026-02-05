@@ -33,7 +33,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6 auto-rows-[280px]">
+      <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6 auto-rows-[320px]">
         {PRODUCTS_LIST.map((product, idx) => {
           // Bento layout logic
           let colSpan = "md:col-span-3 lg:col-span-4";
@@ -49,37 +49,38 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
             <div
               key={product.id}
               onClick={() => handleProductClick(product.id)}
-              className={`group relative overflow-hidden rounded-[2.5rem] border border-white/5 bg-zinc-900/40 p-8 backdrop-blur-xl transition-all duration-500 hover:border-white/20 flex flex-col justify-between ${colSpan} cursor-pointer`}
+              className={`group relative overflow-hidden rounded-[2.5rem] border border-white/5 bg-zinc-900/40 p-8 backdrop-blur-xl transition-all duration-500 hover:border-white/20 hover:bg-zinc-900/60 flex flex-col ${colSpan} cursor-pointer min-h-[300px]`}
             >
               {/* Background Glow Effect */}
               <div className={`absolute -top-24 -right-24 w-64 h-64 blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-700 bg-gradient-to-br ${product.darkGradient}`} />
 
-              <div className="relative z-10">
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 border transition-transform duration-500 group-hover:scale-110 ${product.darkBorder} ${product.darkBg}`}>
-                  <Icon className="w-7 h-7 text-white" />
+              {/* Content Container */}
+              <div className="relative z-10 flex flex-col h-full">
+                {/* Top Section */}
+                <div className="flex-grow">
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 border transition-transform duration-500 group-hover:scale-110 ${product.darkBorder} ${product.darkBg}`}>
+                    <Icon className="w-7 h-7 text-white" />
+                  </div>
+
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+                      {product.category}
+                    </span>
+                    <h3 className="text-3xl font-bold tracking-tight text-white group-hover:text-zinc-100 transition-colors">
+                      {product.name}
+                    </h3>
+                    <p className="text-zinc-400 leading-relaxed max-w-md group-hover:text-zinc-300 transition-colors line-clamp-2">
+                      {product.description}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="space-y-2">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">
-                    {product.category}
-                  </span>
-                  <h3 className="text-3xl font-bold tracking-tight text-white group-hover:text-zinc-100 transition-colors">
-                    {product.name}
-                  </h3>
-                  <p className="text-zinc-400 leading-relaxed max-w-md group-hover:text-zinc-300 transition-colors">
-                    {product.description}
-                  </p>
-                </div>
-              </div>
-
-              <div className="relative z-10 flex items-center justify-between mt-8">
-                <button className="flex items-center gap-2 text-sm font-semibold text-white/70 group-hover:text-white transition-colors">
-                  Explore Product
-                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </button>
-
-                <div className={`w-10 h-10 rounded-full border border-white/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0`}>
-                  <ExternalLink className="w-4 h-4 text-zinc-400" />
+                {/* Bottom Section - Explore Button */}
+                <div className="mt-auto pt-4">
+                  <div className="flex items-center gap-2 text-blue-400 font-semibold group-hover:gap-3 transition-all duration-300">
+                    <span>Explore Product</span>
+                    <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                  </div>
                 </div>
               </div>
             </div>

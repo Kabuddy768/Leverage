@@ -66,13 +66,13 @@ export default function Products({ onExplore }: ProductsProps) {
                 {product.description}
               </p>
 
-              <button
+              {/* <button
                 onClick={onExplore}
                 className="mt-6 flex items-center gap-2 text-white font-semibold opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
               >
                 Learn More
                 <ArrowUpRight className="w-4 h-4" />
-              </button>
+              </button> */}
             </div>
           </div>
         ))}
