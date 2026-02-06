@@ -13,9 +13,12 @@ import IQRetail from './components/IQRetail';
 import Sage200 from './components/Sage200';
 import XactERP from './components/XactERP';
 import Medeiplus from './components/Medeiplus';
+import PrivacyPolicyPage from './components/privacy/page';
+import CookiePolicyPage from './components/cookie-policy/page';
+import TermsOfServicePage from './components/terms/page';
 
 const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'products' | 'about' | 'contact' | 'palladium' | 'iqRetail' | 'sage200' | 'xactErp' | 'medeiplus'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'products' | 'about' | 'contact' | 'palladium' | 'iqRetail' | 'sage200' | 'xactErp' | 'medeiplus' | 'privacy' | 'cookies' | 'terms'>('home');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -39,6 +42,12 @@ const App: React.FC = () => {
         return <XactERP onBack={() => setCurrentPage('products')} />;
       case 'medeiplus':
         return <Medeiplus onBack={() => setCurrentPage('products')} />;
+      case 'privacy':
+        return <PrivacyPolicyPage />;
+      case 'cookies':
+        return <CookiePolicyPage />;
+      case 'terms':
+        return <TermsOfServicePage />;
       default:
         return (
           <div className="animate-fade-in">

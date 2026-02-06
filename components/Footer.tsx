@@ -3,7 +3,7 @@ import React from 'react';
 import { Mail, Phone, MapPin, Linkedin, Facebook, Twitter } from 'lucide-react';
 
 interface FooterProps {
-  onNavigate: (page: 'home' | 'products' | 'about' | 'contact' | 'palladium' | 'iqRetail' | 'sage200' | 'xactErp' | 'medeiplus') => void;
+  onNavigate: (page: 'home' | 'products' | 'about' | 'contact' | 'palladium' | 'iqRetail' | 'sage200' | 'xactErp' | 'medeiplus' | 'privacy' | 'cookies' | 'terms') => void;
 }
 
 export default function Footer({ onNavigate }: FooterProps) {
@@ -81,9 +81,9 @@ export default function Footer({ onNavigate }: FooterProps) {
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-500">
           <p>© {currentYear} Office Choice Solutions Ltd. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white">Privacy Policy</a>
-            <a href="#" className="hover:text-white">Terms of Service</a>
-            <a href="#" className="hover:text-white">Cookie Settings</a>
+            <button onClick={() => onNavigate('privacy')} className="hover:text-white">Privacy Policy</button>
+            <button onClick={() => onNavigate('terms')} className="hover:text-white">Terms of Service</button>
+            <button onClick={() => onNavigate('cookies')} className="hover:text-white">Cookie Policy</button>
           </div>
         </div>
       </div>
