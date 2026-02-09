@@ -1,14 +1,22 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import * as Brevo from '@getbrevo/brevo';
+import nodemailer from 'nodemailer';
 
-const apiKey = process.env.BREVO_API_KEY;
+const requiredEnvVars = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS'];
+const missingVars = requiredEnvVars.filter(v => !process.env[v]);
 
-if (!apiKey) {
-    throw new Error('BREVO_API_KEY is not defined');
+if (missingVars.length > 0) {
+    throw new Error(`Missing environment variables: ${missingVars.join(', ')}`);
 }
 
-const apiInstance = new Brevo.TransactionalEmailsApi();
-apiInstance.setApiKey(Brevo.TransactionalEmailsApiApiKeys.apiKey, apiKey);
+const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: parseInt(process.env.SMTP_PORT || '587'),
+    secure: process.env.SMTP_PORT === '465', // true for 465, false for other ports
+    auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+    },
+});
 
 export default async function handler(
     request: VercelRequest,
@@ -25,27 +33,27 @@ export default async function handler(
             return response.status(400).json({ error: 'Missing required fields' });
         }
 
-        const sendSmtpEmail = new Brevo.SendSmtpEmail();
+        const mailOptions = {
+            from: `"Office Choice Solutions Website" <${process.env.SMTP_USER}>`, // sender address
+            to: "info@officechoicesolutions.co.ke", // list of receivers
+            replyTo: email,
+            subject: `New Inquiry: ${subject || 'General Inquiry'}`, // Subject line
+            html: `
+        <html>
+          <body>
+            <h1>New Contact Form Submission</h1>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+            <p><strong>Subject:</strong> ${subject}</p>
+            <h2>Message:</h2>
+            <p>${message.replace(/\n/g, '<br>')}</p>
+          </body>
+        </html>
+      `,
+        };
 
-        sendSmtpEmail.subject = `New Inquiry: ${subject || 'General Inquiry'}`;
-        sendSmtpEmail.htmlContent = `
-      <html>
-        <body>
-          <h1>New Contact Form Submission</h1>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-          <p><strong>Subject:</strong> ${subject}</p>
-          <h2>Message:</h2>
-          <p>${message.replace(/\n/g, '<br>')}</p>
-        </body>
-      </html>
-    `;
-        sendSmtpEmail.sender = { name: "Office Choice Solutions Website", email: "no-reply@officechoicesolutions.co.ke" };
-        sendSmtpEmail.to = [{ email: "info@officechoicesolutions.co.ke", name: "Office Choice Solutions" }];
-        sendSmtpEmail.replyTo = { email: email, name: name };
-
-        await apiInstance.sendTransacEmail(sendSmtpEmail);
+        await transporter.sendMail(mailOptions);
 
         return response.status(200).json({ success: true });
     } catch (error: any) {
