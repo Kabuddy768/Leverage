@@ -22,6 +22,7 @@ import TermsOfServicePage from './components/terms/page';
 import PartnersPage from './components/PartnersPage';
 import ScrollToTop from './components/ScrollToTop';
 import SEO from './components/SEO';
+import WhatsAppButton from './components/WhatsAppButton';
 
 const App: React.FC = () => {
   return (
@@ -146,6 +147,7 @@ const App: React.FC = () => {
           </main>
 
           <Footer />
+          <WhatsAppButton />
         </div>
       </BrowserRouter>
     </HelmetProvider>
