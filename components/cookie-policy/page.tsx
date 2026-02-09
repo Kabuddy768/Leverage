@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Cookie, ArrowUp, Mail, Phone } from "lucide-react";
-// Using plain React - no Next.js Link needed
+import { Link } from "react-router-dom";
 
 export default function CookiePolicyPage() {
   const [activeSection, setActiveSection] = useState("");
@@ -98,8 +98,8 @@ export default function CookiePolicyPage() {
                     key={section.id}
                     onClick={() => scrollToSection(section.id)}
                     className={`block w-full text-left text-sm py-2 px-3 rounded-lg transition-all ${activeSection === section.id
-                        ? "bg-emerald-500/10 text-emerald-500 font-medium"
-                        : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                      ? "bg-emerald-500/10 text-emerald-500 font-medium"
+                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
                       }`}
                   >
                     {section.title}
@@ -313,9 +313,9 @@ export default function CookiePolicyPage() {
                 <div className="mt-8 pt-6 border-t border-border">
                   <p className="text-sm text-muted-foreground">
                     For more information about how we collect and use your personal data, please see our{" "}
-                    <a href="#privacy" className="text-emerald-500 hover:text-emerald-400 underline">
+                    <Link to="/privacy" className="text-emerald-500 hover:text-emerald-400 underline">
                       Privacy Policy
-                    </a>.
+                    </Link>.
                   </p>
                 </div>
               </div>

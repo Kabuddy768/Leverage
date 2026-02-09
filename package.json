@@ -9,12 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@getbrevo/brevo": "^3.0.1",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
     "framer-motion": "^12.31.2",
     "lucide-react": "^0.563.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "react-helmet-async": "^2.0.5",
+    "react-router-dom": "^7.13.0",
     "three": "^0.182.0",
     "zod": "^3.25.76"
   },

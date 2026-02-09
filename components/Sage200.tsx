@@ -1,14 +1,11 @@
 
 import React from 'react';
 import { Box, ArrowLeft, Globe, FileStack, Users, Layers, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import ElectricBorder from './ElectricBorder';
 import { PRODUCT_COLORS } from '../constants/products';
 
-interface Sage200Props {
-    onBack: () => void;
-}
-
-export default function Sage200({ onBack }: Sage200Props) {
+export default function Sage200() {
     const features = [
         {
             title: "Financial Excellence",
@@ -35,13 +32,13 @@ export default function Sage200({ onBack }: Sage200Props) {
     return (
         <div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto animate-fade-in">
             {/* Back Button */}
-            <button
-                onClick={onBack}
+            <Link
+                to="/products"
                 className="mb-8 flex items-center gap-2 text-zinc-400 hover:text-white transition-colors group"
             >
                 <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                 Back to Products
-            </button>
+            </Link>
 
             {/* Hero Section */}
             <div className="grid lg:grid-cols-2 gap-12 items-center mb-24">

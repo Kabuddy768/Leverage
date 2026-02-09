@@ -1,10 +1,7 @@
 
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
-
-interface ProductsProps {
-  onExplore: () => void;
-}
+import { Link } from 'react-router-dom';
 
 const products = [
   {
@@ -27,7 +24,7 @@ const products = [
   }
 ];
 
-export default function Products({ onExplore }: ProductsProps) {
+export default function Products() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -35,13 +32,13 @@ export default function Products({ onExplore }: ProductsProps) {
           <h2 className="text-sm font-semibold text-zinc-500 uppercase tracking-widest mb-3">Our Portfolio</h2>
           <p className="text-4xl sm:text-5xl font-bold tracking-tight">World-Class Solutions</p>
         </div>
-        <button
-          onClick={onExplore}
+        <Link
+          to="/products"
           className="text-white border-b border-white/20 pb-1 hover:border-white transition-all flex items-center gap-2 font-medium"
         >
           Explore Full Catalog
           <ArrowUpRight className="w-4 h-4" />
-        </button>
+        </Link>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

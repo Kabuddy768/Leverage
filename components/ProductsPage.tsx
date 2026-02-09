@@ -1,24 +1,23 @@
 
 import React from 'react';
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { PRODUCTS_LIST } from '../constants/products';
 
-interface ProductsPageProps {
-  onNavigate: (page: 'palladium' | 'iqRetail' | 'sage200' | 'xactErp' | 'medeiplus') => void;
-}
+export default function ProductsPage() {
+  const navigate = useNavigate();
 
-export default function ProductsPage({ onNavigate }: ProductsPageProps) {
   const handleProductClick = (productId: string) => {
     if (productId === 'palladium') {
-      onNavigate('palladium');
+      navigate('/products/palladium');
     } else if (productId === 'iqRetail') {
-      onNavigate('iqRetail');
+      navigate('/products/iq-retail');
     } else if (productId === 'sage200') {
-      onNavigate('sage200');
+      navigate('/products/sage-200');
     } else if (productId === 'xactErp') {
-      onNavigate('xactErp');
-    } else if (productId === 'medeiplus') {
-      onNavigate('medeiplus');
+      navigate('/products/xact-erp');
+    } else if (productId === 'medeilplus') {
+      navigate('/products/medeilplus');
     }
   };
 
@@ -41,7 +40,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
           if (idx === 1) colSpan = "md:col-span-6 lg:col-span-4"; // IQ Retail
           if (idx === 2) colSpan = "md:col-span-3 lg:col-span-6"; // Sage 200
           if (idx === 3) colSpan = "md:col-span-3 lg:col-span-6"; // Xact ERP
-          if (idx === 4) colSpan = "md:col-span-6 lg:col-span-12"; // Medeiplus wide bottom
+          if (idx === 4) colSpan = "md:col-span-6 lg:col-span-12"; // Medeilplus wide bottom
 
           const Icon = product.icon;
 
@@ -90,3 +89,4 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
     </div>
   );
 }
+

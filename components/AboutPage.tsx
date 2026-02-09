@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Target, Users, ShieldCheck, Globe, Rocket, Award, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import LightPillar from './LightPillar';
 
 const Values = [
@@ -79,7 +80,7 @@ export default function AboutPage() {
                 We bridge the gap between complex software and business success. By focusing on implementation excellence, we ensure that every ERP tool becomes a catalyst for real growth.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="flex items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/5">
                 <CheckCircle2 className="w-5 h-5 text-emerald-500" />
@@ -133,7 +134,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {Values.map((value, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="group p-10 rounded-[2.5rem] border border-white/5 bg-zinc-900/60 hover:bg-zinc-800 transition-all duration-500"
               >
@@ -151,24 +152,30 @@ export default function AboutPage() {
       {/* CTA Section */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden p-12 md:p-20 rounded-[3rem] border border-white/10 bg-zinc-950 text-center">
-           <div className="absolute inset-0 z-0 opacity-10">
-              <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-[120px]" />
-              <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-[120px]" />
-           </div>
-           <div className="relative z-10 space-y-8">
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">Join the Digital Revolution</h2>
-              <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
-                Discover why Office Choice Solutions is the preferred implementation partner for Kenya's most ambitious companies.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-10 py-4 bg-white text-zinc-950 font-bold rounded-full hover:bg-zinc-200 transition-all">
-                  Contact Our Team
-                </button>
-                <button className="px-10 py-4 border border-white/10 text-white font-bold rounded-full hover:bg-white/5 transition-all">
-                  Our Partnerships
-                </button>
-              </div>
-           </div>
+          <div className="absolute inset-0 z-0 opacity-10">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-[120px]" />
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-[120px]" />
+          </div>
+          <div className="relative z-10 space-y-8">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">Join the Digital Revolution</h2>
+            <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
+              Discover why Office Choice Solutions is the preferred implementation partner for Kenya's most ambitious companies.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/contact"
+                className="px-10 py-4 bg-white text-zinc-950 font-bold rounded-full hover:bg-zinc-200 transition-all flex items-center justify-center"
+              >
+                Contact Our Team
+              </Link>
+              <Link
+                to="/partners"
+                className="px-10 py-4 border border-white/10 text-white font-bold rounded-full hover:bg-white/5 transition-all flex items-center justify-center"
+              >
+                Our Partnerships
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </article>

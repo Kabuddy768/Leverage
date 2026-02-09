@@ -1,14 +1,11 @@
 
 import React from 'react';
 import { Cpu, ArrowLeft, HeartPulse, Stethoscope, Activity, FileText, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import ElectricBorder from './ElectricBorder';
 import { PRODUCT_COLORS } from '../constants/products';
 
-interface MedeiplusProps {
-    onBack: () => void;
-}
-
-export default function Medeiplus({ onBack }: MedeiplusProps) {
+export default function Medeilplus() {
     const features = [
         {
             title: "Patient Management",
@@ -35,13 +32,13 @@ export default function Medeiplus({ onBack }: MedeiplusProps) {
     return (
         <div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto animate-fade-in">
             {/* Back Button */}
-            <button
-                onClick={onBack}
+            <Link
+                to="/products"
                 className="mb-8 flex items-center gap-2 text-zinc-400 hover:text-white transition-colors group"
             >
                 <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                 Back to Products
-            </button>
+            </Link>
 
             {/* Hero Section */}
             <div className="grid lg:grid-cols-2 gap-12 items-center mb-24">
@@ -113,7 +110,7 @@ export default function Medeiplus({ onBack }: MedeiplusProps) {
             {/* Why Choose Section */}
             <div className="bg-zinc-900/30 rounded-[2.5rem] p-8 md:p-16 border border-white/5">
                 <div className="max-w-3xl mx-auto text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose Medeiplus?</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose Medeilplus?</h2>
                     <p className="text-zinc-400">
                         Built to navigate the complexities of modern healthcare regulations and billing practices.
                     </p>

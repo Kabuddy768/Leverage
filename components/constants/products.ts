@@ -54,7 +54,7 @@ export const PRODUCT_COLORS = {
     icon: Box,
     description: "The global standard for large-scale enterprise resource planning and financial management."
   },
-  medeiplus: {
+  medeilplus: {
     primary: 'rgb(236, 72, 153)',
     secondary: 'rgb(219, 39, 119)',
     gradient: 'from-pink-500 to-rose-600',
@@ -74,5 +74,5 @@ export const PRODUCTS_LIST = [
   { id: 'iqRetail', name: 'IQ Retail', category: 'Retail & Distribution', ...PRODUCT_COLORS.iqRetail },
   { id: 'sage200', name: 'Sage 200', category: 'Enterprise ERP', ...PRODUCT_COLORS.sage200 },
   { id: 'xactErp', name: 'Xact ERP', category: 'Manufacturing', ...PRODUCT_COLORS.xactErp },
-  { id: 'medeiplus', name: 'Medeiplus', category: 'Healthcare', ...PRODUCT_COLORS.medeiplus },
+  { id: 'medeilplus', name: 'Medeilplus', category: 'Healthcare', ...PRODUCT_COLORS.medeilplus },
 ];

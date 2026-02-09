@@ -33,8 +33,19 @@ export default function ContactPage() {
 
     try {
       contactSchema.parse(formData);
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to send message');
+      }
+
       setIsSuccess(true);
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
     } catch (err) {
@@ -44,6 +55,10 @@ export default function ContactPage() {
           if (e.path[0]) formattedErrors[e.path[0] as string] = e.message;
         });
         setErrors(formattedErrors);
+      } else {
+        console.error('Submission error:', err);
+        // show generic error or handle it in UI
+        alert('Failed to send message. Please try again later.');
       }
     } finally {
       setIsSubmitting(false);
@@ -56,7 +71,7 @@ export default function ContactPage() {
     { id: 'iqretail', name: 'IQ Retail' },
     { id: 'sage', name: 'Sage 200' },
     { id: 'xact', name: 'Xact ERP' },
-    { id: 'medeiplus', name: 'Medeiplus' },
+    { id: 'medeilplus', name: 'Medeilplus' },
   ];
 
   const handleWhatsApp = () => {
@@ -95,7 +110,7 @@ export default function ContactPage() {
       {/* Main Content */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 -mt-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* Left Column: Contact Details */}
           <div className="lg:col-span-5 space-y-10">
             <div className="space-y-6">
@@ -147,7 +162,7 @@ export default function ContactPage() {
               <p className="text-zinc-400">
                 Need an immediate response? Our technical team is available on WhatsApp for quick consultations.
               </p>
-              <button 
+              <button
                 onClick={handleWhatsApp}
                 className="w-full py-4 bg-emerald-500 text-white font-bold rounded-2xl hover:bg-emerald-600 transition-all flex items-center justify-center gap-2"
               >
@@ -169,7 +184,7 @@ export default function ContactPage() {
                   <p className="text-zinc-400 max-w-sm mx-auto mb-10">
                     Thank you for reaching out. One of our ERP implementation specialists will contact you within the next 4 business hours.
                   </p>
-                  <button 
+                  <button
                     onClick={() => setIsSuccess(false)}
                     className="px-8 py-3 bg-white text-zinc-950 font-bold rounded-full hover:bg-zinc-200 transition-all"
                   >
@@ -181,11 +196,11 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-sm font-bold text-zinc-500 uppercase tracking-widest px-1">Full Name</label>
-                      <input 
+                      <input
                         type="text"
                         placeholder="John Doe"
                         value={formData.name}
-                        onChange={e => setFormData({...formData, name: e.target.value})}
+                        onChange={e => setFormData({ ...formData, name: e.target.value })}
                         className={`w-full bg-white/5 border ${errors.name ? 'border-red-500' : 'border-white/10'} rounded-2xl px-6 py-4 focus:outline-none focus:border-white transition-all`}
                       />
                       {errors.name && <p className="text-xs text-red-500 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" />{errors.name}</p>}
@@ -193,11 +208,11 @@ export default function ContactPage() {
 
                     <div className="space-y-2">
                       <label className="text-sm font-bold text-zinc-500 uppercase tracking-widest px-1">Email Address</label>
-                      <input 
+                      <input
                         type="email"
                         placeholder="john@company.com"
                         value={formData.email}
-                        onChange={e => setFormData({...formData, email: e.target.value})}
+                        onChange={e => setFormData({ ...formData, email: e.target.value })}
                         className={`w-full bg-white/5 border ${errors.email ? 'border-red-500' : 'border-white/10'} rounded-2xl px-6 py-4 focus:outline-none focus:border-white transition-all`}
                       />
                       {errors.email && <p className="text-xs text-red-500 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" />{errors.email}</p>}
@@ -207,11 +222,11 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-sm font-bold text-zinc-500 uppercase tracking-widest px-1">Phone Number</label>
-                      <input 
+                      <input
                         type="tel"
                         placeholder="+254..."
                         value={formData.phone}
-                        onChange={e => setFormData({...formData, phone: e.target.value})}
+                        onChange={e => setFormData({ ...formData, phone: e.target.value })}
                         className={`w-full bg-white/5 border ${errors.phone ? 'border-red-500' : 'border-white/10'} rounded-2xl px-6 py-4 focus:outline-none focus:border-white transition-all`}
                       />
                       {errors.phone && <p className="text-xs text-red-500 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" />{errors.phone}</p>}
@@ -220,9 +235,9 @@ export default function ContactPage() {
                     <div className="space-y-2 relative">
                       <label className="text-sm font-bold text-zinc-500 uppercase tracking-widest px-1">Inquiry Type</label>
                       <div className="relative">
-                        <select 
+                        <select
                           value={formData.subject}
-                          onChange={e => setFormData({...formData, subject: e.target.value})}
+                          onChange={e => setFormData({ ...formData, subject: e.target.value })}
                           className={`w-full appearance-none bg-white/5 border ${errors.subject ? 'border-red-500' : 'border-white/10'} rounded-2xl px-6 py-4 focus:outline-none focus:border-white transition-all cursor-pointer`}
                         >
                           <option value="" disabled className="bg-zinc-950">Select a topic</option>
@@ -238,17 +253,17 @@ export default function ContactPage() {
 
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-zinc-500 uppercase tracking-widest px-1">Your Message</label>
-                    <textarea 
+                    <textarea
                       rows={5}
                       placeholder="How can we help your business thrive?"
                       value={formData.message}
-                      onChange={e => setFormData({...formData, message: e.target.value})}
+                      onChange={e => setFormData({ ...formData, message: e.target.value })}
                       className={`w-full bg-white/5 border ${errors.message ? 'border-red-500' : 'border-white/10'} rounded-[1.5rem] px-6 py-4 focus:outline-none focus:border-white transition-all resize-none`}
                     />
                     {errors.message && <p className="text-xs text-red-500 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" />{errors.message}</p>}
                   </div>
 
-                  <button 
+                  <button
                     type="submit"
                     disabled={isSubmitting}
                     className={`w-full py-5 bg-white text-zinc-950 font-black rounded-2xl hover:bg-zinc-200 transition-all flex items-center justify-center gap-3 active:scale-[0.98] ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
