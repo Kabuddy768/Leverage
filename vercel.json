@@ -1,0 +1,32 @@
+{
+    "rewrites": [
+        {
+            "source": "/contact",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/products/(.*)",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/partners",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/privacy-policy",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/cookie-policy",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/terms-of-service",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/((?!api/.*).*)",
+            "destination": "/index.html"
+        }
+    ]
+}
