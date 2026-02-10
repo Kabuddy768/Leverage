@@ -2,21 +2,6 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import nodemailer from 'nodemailer';
 
 const requiredEnvVars = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS'];
-const missingVars = requiredEnvVars.filter(v => !process.env[v]);
-
-if (missingVars.length > 0) {
-    throw new Error(`Missing environment variables: ${missingVars.join(', ')}`);
-}
-
-const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: parseInt(process.env.SMTP_PORT || '587'),
-    secure: process.env.SMTP_PORT === '465', // true for 465, false for other ports
-    auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-    },
-});
 
 export default async function handler(
     request: VercelRequest,
@@ -26,6 +11,22 @@ export default async function handler(
         return response.status(405).json({ error: 'Method not allowed' });
     }
 
+    const missingVars = requiredEnvVars.filter(v => !process.env[v]);
+    if (missingVars.length > 0) {
+        console.error(`Missing environment variables: ${missingVars.join(', ')}`);
+        return response.status(500).json({ error: 'Server configuration error: Missing environment variables' });
+    }
+
+    const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: parseInt(process.env.SMTP_PORT || '587'),
+        secure: process.env.SMTP_PORT === '465',
+        auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS,
+        },
+    });
+
     try {
         const { name, email, phone, subject, message } = request.body;
 
@@ -34,10 +35,10 @@ export default async function handler(
         }
 
         const mailOptions = {
-            from: `"Office Choice Solutions Website" <${process.env.SMTP_USER}>`, // sender address
-            to: "info@officechoicesolutions.co.ke", // list of receivers
+            from: `"Office Choice Solutions Website" <${process.env.SMTP_USER}>`,
+            to: "info@officechoicesolutions.co.ke",
             replyTo: email,
-            subject: `New Inquiry: ${subject || 'General Inquiry'}`, // Subject line
+            subject: `New Inquiry: ${subject || 'General Inquiry'}`,
             html: `
         <html>
           <body>
