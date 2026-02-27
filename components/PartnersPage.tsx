@@ -15,8 +15,8 @@ const PARTNERS = [
         tags: ['Energy', 'Logistics', 'KRA Compliant']
     },
     {
-        id: 'izeka',
-        name: 'Izeka Wire Products',
+        id: 'zeka',
+        name: 'Zeka Wire Products',
         industry: 'Industrial Manufacturing',
         description: 'Specialists in high-tensile wire products for the construction sector. Our Xact ERP implementation optimized their production floors and reduced raw material waste by 18%.',
         icon: Factory,

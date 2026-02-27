@@ -20,6 +20,7 @@ import PrivacyPolicyPage from './components/privacy/page';
 import CookiePolicyPage from './components/cookie-policy/page';
 import TermsOfServicePage from './components/terms/page';
 import PartnersPage from './components/PartnersPage';
+import FAQPage from './components/FAQPage';
 import ScrollToTop from './components/ScrollToTop';
 import SEO from './components/SEO';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -83,6 +84,10 @@ const App: React.FC = () => {
                   <SEO title="Our Partners | Office Choice Solutions" description="Discover our ecosystem of strategic partners and success stories across various industries." />
                   <PartnersPage />
                 </>
+              } />
+
+              <Route path="/faq" element={
+                <FAQPage />
               } />
 
               {/* Individual Product Pages */}

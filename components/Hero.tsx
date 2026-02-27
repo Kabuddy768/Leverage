@@ -9,7 +9,7 @@ const CLIENTS = [
   { name: "Xact ERP", icon: Layers },
   { name: "Sage 200", icon: Box },
   { name: "Medeilplus", icon: Cpu },
-  { name: "FinancePro", icon: Briefcase },
+  { name: "Custom Softwares", icon: Briefcase },
 ];
 
 const StatItem = ({ value, label }: { value: string; label: string }) => (
