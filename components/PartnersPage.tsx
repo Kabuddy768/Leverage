@@ -2,7 +2,8 @@
 import React from 'react';
 import { Shield, Factory, Handshake, Globe, ArrowUpRight, CheckCircle2, Quote, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Beams from './Beams';
+
+const Beams = React.lazy(() => import('./Beams'));
 
 const PARTNERS = [
     {
@@ -40,16 +41,18 @@ export default function PartnersPage() {
             {/* Dynamic Background Section */}
             <section className="relative w-full h-[60vh] flex items-center justify-center pt-24 overflow-hidden">
                 <div className="absolute inset-0 z-0 opacity-50">
-                    <Beams
-                        beamWidth={4}
-                        beamHeight={40}
-                        beamNumber={15}
-                        lightColor="#ffffff"
-                        speed={1.5}
-                        noiseIntensity={2.0}
-                        scale={0.3}
-                        rotation={45}
-                    />
+                    <React.Suspense fallback={<div className="absolute inset-0 bg-zinc-950">Loading ambient background...</div>}>
+                        <Beams
+                            beamWidth={4}
+                            beamHeight={40}
+                            beamNumber={15}
+                            lightColor="#ffffff"
+                            speed={1.5}
+                            noiseIntensity={2.0}
+                            scale={0.3}
+                            rotation={45}
+                        />
+                    </React.Suspense>
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/60 to-zinc-950" />
                 </div>
 

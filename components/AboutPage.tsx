@@ -2,7 +2,8 @@
 import React from 'react';
 import { Target, Users, ShieldCheck, Globe, Rocket, Award, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import LightPillar from './LightPillar';
+
+const LightPillar = React.lazy(() => import('./LightPillar'));
 
 const Values = [
   {
@@ -31,20 +32,22 @@ export default function AboutPage() {
       {/* Hero Section with LightPillar */}
       <section className="relative w-full h-[70vh] flex items-center justify-center pt-20">
         <div className="absolute inset-0 z-0">
-          <LightPillar
-            topColor="#3b82f6"
-            bottomColor="#a855f7"
-            intensity={0.6}
-            rotationSpeed={0.2}
-            glowAmount={0.003}
-            pillarWidth={4}
-            pillarHeight={0.6}
-            noiseIntensity={0.3}
-            pillarRotation={15}
-            interactive={true}
-            mixBlendMode="screen"
-            quality="high"
-          />
+          <React.Suspense fallback={<div className="absolute inset-0 bg-zinc-950">Loading ambient background...</div>}>
+            <LightPillar
+              topColor="#3b82f6"
+              bottomColor="#a855f7"
+              intensity={0.6}
+              rotationSpeed={0.2}
+              glowAmount={0.003}
+              pillarWidth={4}
+              pillarHeight={0.6}
+              noiseIntensity={0.3}
+              pillarRotation={15}
+              interactive={true}
+              mixBlendMode="screen"
+              quality="high"
+            />
+          </React.Suspense>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/20 to-zinc-950" />
         </div>
 

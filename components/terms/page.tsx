@@ -1,9 +1,7 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FileText, ArrowUp, Mail, Phone } from "lucide-react";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 export default function TermsOfServicePage() {
   const [activeSection, setActiveSection] = useState("");
@@ -57,13 +55,13 @@ export default function TermsOfServicePage() {
 
   return (
     <div className="min-h-screen pt-24 pb-12 px-6 relative overflow-hidden">
-      
+
       {/* Background Ambience */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-purple-500/10 blur-[120px] -z-10 rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-violet-500/10 blur-[120px] -z-10 rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Page Header */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <motion.div
@@ -84,7 +82,7 @@ export default function TermsOfServicePage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 items-start">
-          
+
           {/* LEFT COLUMN: Table of Contents (Sticky) */}
           <motion.aside
             initial={{ opacity: 0, x: -20 }}
@@ -102,11 +100,10 @@ export default function TermsOfServicePage() {
                   <button
                     key={section.id}
                     onClick={() => scrollToSection(section.id)}
-                    className={`block w-full text-left text-sm py-2 px-3 rounded-lg transition-all ${
-                      activeSection === section.id
-                        ? "bg-purple-500/10 text-purple-500 font-medium"
-                        : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                    }`}
+                    className={`block w-full text-left text-sm py-2 px-3 rounded-lg transition-all ${activeSection === section.id
+                      ? "bg-purple-500/10 text-purple-500 font-medium"
+                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                      }`}
                   >
                     {section.title}
                   </button>

@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MessageSquare, Send, CheckCircle, AlertCircle, ChevronDown, MapPin, ExternalLink } from 'lucide-react';
 import { z } from 'zod';
-import Beams from './Beams';
+
+const Beams = React.lazy(() => import('./Beams'));
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -84,16 +85,18 @@ export default function ContactPage() {
       {/* Visual Background Section */}
       <section className="relative w-full h-[50vh] flex items-center justify-center pt-24">
         <div className="absolute inset-0 z-0">
-          <Beams
-            beamWidth={3}
-            beamHeight={30}
-            beamNumber={20}
-            lightColor="#ffffff"
-            speed={2}
-            noiseIntensity={1.75}
-            scale={0.2}
-            rotation={30}
-          />
+          <React.Suspense fallback={<div className="absolute inset-0 bg-zinc-950" />}>
+            <Beams
+              beamWidth={3}
+              beamHeight={30}
+              beamNumber={20}
+              lightColor="#ffffff"
+              speed={2}
+              noiseIntensity={1.75}
+              scale={0.2}
+              rotation={30}
+            />
+          </React.Suspense>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/40 to-zinc-950" />
         </div>
 

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Quote, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const testimonials = [
   {
@@ -33,18 +34,18 @@ export default function Testimonials() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {testimonials.map((t, idx) => (
-          <div 
+          <div
             key={idx}
             className="p-10 rounded-[2.5rem] bg-zinc-900/50 border border-white/5 relative flex flex-col justify-between hover:bg-zinc-900 transition-colors"
           >
             <Quote className="absolute top-8 right-8 w-12 h-12 text-white/5" />
-            
+
             <div>
               <div className="flex gap-1 mb-6">
                 {[...Array(5)].map((_, i) => (
-                  <Star 
-                    key={i} 
-                    className={`w-4 h-4 ${i < t.rating ? 'text-yellow-500 fill-yellow-500' : 'text-zinc-700'}`} 
+                  <Star
+                    key={i}
+                    className={`w-4 h-4 ${i < t.rating ? 'text-yellow-500 fill-yellow-500' : 'text-zinc-700'}`}
                   />
                 ))}
               </div>
@@ -67,12 +68,12 @@ export default function Testimonials() {
           <p className="text-zinc-400">Join 500+ businesses using our ERP solutions to drive efficiency and profit.</p>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-          <button className="px-10 py-4 bg-white text-zinc-950 font-bold rounded-full hover:bg-zinc-200 transition-all text-center">
+          <Link to="/contact" className="px-10 py-4 bg-white text-zinc-950 font-bold rounded-full hover:bg-zinc-200 transition-all text-center">
             Book a Demo
-          </button>
-          <button className="px-10 py-4 bg-zinc-800 text-white font-bold rounded-full hover:bg-zinc-700 transition-all border border-white/10 text-center">
+          </Link>
+          <Link to="/contact" className="px-10 py-4 bg-zinc-800 text-white font-bold rounded-full hover:bg-zinc-700 transition-all border border-white/10 text-center">
             Contact Sales
-          </button>
+          </Link>
         </div>
       </div>
     </div>

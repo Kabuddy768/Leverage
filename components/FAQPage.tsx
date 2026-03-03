@@ -52,16 +52,14 @@ export default function FAQPage() {
 
     return (
         <main className="min-h-screen pt-32 pb-24 bg-zinc-950 text-white">
-            <Helmet>
-                <script type="application/ld+json">
-                    {JSON.stringify(faqSchema)}
-                </script>
-            </Helmet>
-
             <SEO
                 title="Frequently Asked Questions (FAQ) | Office Choice Solutions"
                 description="Find answers to common questions about ERP implementations, Sage 200, Palladium Accounting, IQ Retail, timelines, and costs for Kenyan SMEs."
-            />
+            >
+                <script type="application/ld+json">
+                    {JSON.stringify(faqSchema)}
+                </script>
+            </SEO>
 
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">

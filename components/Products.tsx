@@ -7,19 +7,22 @@ const products = [
   {
     name: "Palladium Accounting",
     category: "Small to Medium Enterprise",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    // image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    image: "/images/LeveragePalladium.webp",
     description: "Feature-rich accounting software with unmatched stability and data security."
   },
   {
     name: "IQ Retail",
     category: "Retail & Distribution",
-    image: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=800",
+    // image: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=800",
+    image: "/images/LeverageIqRetail.webp",
     description: "Complete retail management solutions from point-of-sale to back-office."
   },
   {
     name: "Sage 200",
     category: "Large Enterprise",
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800",
+    // image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800",
+    image: "/images/LeverageSage200.webp",
     description: "Scale with confidence using one of the world's most trusted ERP systems."
   }
 ];
@@ -49,7 +52,7 @@ export default function Products() {
           >
             <img
               src={product.image}
-              alt={product.name}
+              alt={`${product.name} - ERP Software for ${product.category}`}
               className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />

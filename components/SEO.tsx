@@ -6,9 +6,10 @@ interface SEOProps {
     description: string;
     image?: string;
     path?: string;
+    children?: React.ReactNode;
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description, image, path }) => {
+const SEO: React.FC<SEOProps> = ({ title, description, image, path, children }) => {
     const siteUrl = 'https://officechoicesolutions.co.ke';
     const currentUrl = path ? `${siteUrl}${path}` : siteUrl;
     const defaultImage = `${siteUrl}/logos/Logo1.png`; // Fallback image if none provided
@@ -32,6 +33,9 @@ const SEO: React.FC<SEOProps> = ({ title, description, image, path }) => {
             <meta property="twitter:title" content={title} />
             <meta property="twitter:description" content={description} />
             <meta property="twitter:image" content={image || defaultImage} />
+
+            {/* Any extra schemas or overrides */}
+            {children}
         </Helmet>
     );
 };

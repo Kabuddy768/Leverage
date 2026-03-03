@@ -4,6 +4,7 @@ import { Box, ArrowLeft, Globe, FileStack, Users, Layers, CheckCircle2 } from 'l
 import { Link } from 'react-router-dom';
 import ElectricBorder from './ElectricBorder';
 import { PRODUCT_COLORS } from '../constants/products';
+import { Helmet } from 'react-helmet-async';
 
 export default function Sage200() {
     const features = [
@@ -31,6 +32,28 @@ export default function Sage200() {
 
     return (
         <div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto animate-fade-in">
+            <Helmet>
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Sage 200 Evolution",
+                        "operatingSystem": "Windows",
+                        "applicationCategory": "BusinessApplication",
+                        "description": "An enterprise-grade ERP solution that gives you full control over your financial and operational environment.",
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "KES"
+                        },
+                        "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": "4.7",
+                            "ratingCount": "380"
+                        }
+                    })}
+                </script>
+            </Helmet>
             {/* Back Button */}
             <Link
                 to="/products"
@@ -60,12 +83,12 @@ export default function Sage200() {
                     </p>
 
                     <div className="flex flex-wrap gap-4 pt-4">
-                        <button className="px-8 py-3 bg-white text-zinc-950 rounded-full font-bold hover:bg-zinc-200 transition-colors">
+                        <Link to="/contact" className="px-8 py-3 bg-white text-zinc-950 rounded-full font-bold hover:bg-zinc-200 transition-colors">
                             Request Consultation
-                        </button>
-                        <button className="px-8 py-3 bg-zinc-900 border border-zinc-800 text-white rounded-full font-bold hover:bg-zinc-800 transition-colors">
+                        </Link>
+                        <Link to="/contact" className="px-8 py-3 bg-zinc-900 border border-zinc-800 text-white rounded-full font-bold hover:bg-zinc-800 transition-colors">
                             Download Brochure
-                        </button>
+                        </Link>
                     </div>
                 </div>
 

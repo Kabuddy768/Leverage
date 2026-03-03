@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
@@ -24,8 +24,14 @@ import FAQPage from './components/FAQPage';
 import ScrollToTop from './components/ScrollToTop';
 import SEO from './components/SEO';
 import WhatsAppButton from './components/WhatsAppButton';
+import NotFoundPage from './components/NotFoundPage';
 
 const App: React.FC = () => {
+  useEffect(() => {
+    // Notify prerenderer that the app has finished fundamental rendering
+    document.dispatchEvent(new Event('render-event'));
+  }, []);
+
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -147,6 +153,9 @@ const App: React.FC = () => {
                   <TermsOfServicePage />
                 </>
               } />
+
+              {/* 404 Route */}
+              <Route path="*" element={<NotFoundPage />} />
 
             </Routes>
           </main>
