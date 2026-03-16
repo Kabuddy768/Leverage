@@ -22,6 +22,9 @@ export default defineConfig(({ mode }) => {
         ],
         renderer: new RendererPuppeteer({
           renderAfterDocumentEvent: 'render-event',
+          launchOptions: {
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+          },
         }),
       })
     ],
