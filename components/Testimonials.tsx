@@ -71,9 +71,9 @@ export default function Testimonials() {
           <Link to="/contact" className="px-10 py-4 bg-white text-zinc-950 font-bold rounded-full hover:bg-zinc-200 transition-all text-center">
             Book a Demo
           </Link>
-          <Link to="/contact" className="px-10 py-4 bg-zinc-800 text-white font-bold rounded-full hover:bg-zinc-700 transition-all border border-white/10 text-center">
+          {/* <Link to="/contact" className="px-10 py-4 bg-zinc-800 text-white font-bold rounded-full hover:bg-zinc-700 transition-all border border-white/10 text-center">
             Contact Sales
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

@@ -18,6 +18,8 @@ export default function ProductsPage() {
       navigate('/products/xact-erp');
     } else if (productId === 'medeilplus') {
       navigate('/products/medeilplus');
+    } else if (productId === 'customSoftware') {
+      navigate('/products/custom-software');
     }
   };
 
@@ -35,12 +37,13 @@ export default function ProductsPage() {
       <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6 auto-rows-[320px]">
         {PRODUCTS_LIST.map((product, idx) => {
           // Bento layout logic
-          let colSpan = "md:col-span-3 lg:col-span-4";
+          let colSpan = "md:col-span-3 lg:col-span-6";
           if (idx === 0) colSpan = "md:col-span-6 lg:col-span-8"; // Palladium is huge
           if (idx === 1) colSpan = "md:col-span-6 lg:col-span-4"; // IQ Retail
           if (idx === 2) colSpan = "md:col-span-3 lg:col-span-6"; // Sage 200
           if (idx === 3) colSpan = "md:col-span-3 lg:col-span-6"; // Xact ERP
-          if (idx === 4) colSpan = "md:col-span-6 lg:col-span-12"; // Medeilplus wide bottom
+          if (idx === 4) colSpan = "md:col-span-3 lg:col-span-6"; // Medeilplus
+          if (idx === 5) colSpan = "md:col-span-3 lg:col-span-6"; // Custom Software
 
           const Icon = product.icon;
 

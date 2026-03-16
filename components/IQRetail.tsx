@@ -86,9 +86,9 @@ export default function IQRetail() {
                         <Link to="/contact" className="px-8 py-3 bg-white text-zinc-950 rounded-full font-bold hover:bg-zinc-200 transition-colors">
                             Schedule Demo
                         </Link>
-                        <Link to="/contact" className="px-8 py-3 bg-zinc-900 border border-zinc-800 text-white rounded-full font-bold hover:bg-zinc-800 transition-colors">
+                        {/* <Link to="/contact" className="px-8 py-3 bg-zinc-900 border border-zinc-800 text-white rounded-full font-bold hover:bg-zinc-800 transition-colors">
                             View Features
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
 

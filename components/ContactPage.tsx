@@ -73,6 +73,7 @@ export default function ContactPage() {
     { id: 'sage', name: 'Sage 200' },
     { id: 'xact', name: 'Xact ERP' },
     { id: 'medeilplus', name: 'Medeilplus' },
+    { id: 'custom', name: 'Custom Software Solution' },
   ];
 
   const handleWhatsApp = () => {

@@ -42,6 +42,7 @@ export default function Footer() {
               <li><Link to="/products/xact-erp" className="hover:text-white transition-colors">Xact ERP</Link></li>
               <li><Link to="/products/sage-200" className="hover:text-white transition-colors">Sage 200</Link></li>
               <li><Link to="/products/medeilplus" className="hover:text-white transition-colors">Medeilplus</Link></li>
+              <li><Link to="/products/custom-software" className="hover:text-white transition-colors">Custom Software Solutions</Link></li>
             </ul>
           </div>
 
@@ -50,10 +51,10 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-zinc-400">
               <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
               <li><Link to="/faq" className="hover:text-white transition-colors">FAQ</Link></li>
-              <li><Link to="/about" className="hover:text-white transition-colors">Implementation Team</Link></li>
+              {/* <li><Link to="/about" className="hover:text-white transition-colors">Implementation Team</Link></li> */}
               <li><Link to="/partners" className="hover:text-white transition-colors">Partnerships</Link></li>
-              <li><Link to="/partners" className="hover:text-white transition-colors">Client Cases</Link></li>
-              <li><Link to="/about" className="hover:text-white transition-colors">Careers</Link></li>
+              {/* <li><Link to="/partners" className="hover:text-white transition-colors">Client Cases</Link></li> */}
+              {/* <li><Link to="/about" className="hover:text-white transition-colors">Careers</Link></li> */}
             </ul>
           </div>
 

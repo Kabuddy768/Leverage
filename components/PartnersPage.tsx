@@ -118,10 +118,10 @@ export default function PartnersPage() {
                                         <CheckCircle2 className="w-6 h-6 text-emerald-500" />
                                         <span className="font-semibold text-zinc-300">Implementation Successful</span>
                                     </div>
-                                    <button className="flex items-center gap-2 font-bold text-white hover:text-zinc-300 transition-colors group/btn">
+                                    {/* <button className="flex items-center gap-2 font-bold text-white hover:text-zinc-300 transition-colors group/btn">
                                         Case Study (PDF)
                                         <ExternalLink className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                                    </button>
+                                    </button> */}
                                 </div>
                             </div>
                         </div>
@@ -208,9 +208,9 @@ export default function PartnersPage() {
                             Become a Partner
                             <ArrowUpRight className="w-5 h-5" />
                         </Link>
-                        <button className="px-12 py-5 border border-white/10 text-white font-black rounded-3xl hover:bg-white/5 transition-all">
+                        {/* <button className="px-12 py-5 border border-white/10 text-white font-black rounded-3xl hover:bg-white/5 transition-all">
                             Technical Documentation
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </section>

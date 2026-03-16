@@ -1,5 +1,5 @@
 
-import { Shield, BarChart3, Layers, Box, Cpu } from 'lucide-react';
+import { Shield, BarChart3, Layers, Box, Cpu, Terminal } from 'lucide-react';
 
 export const PRODUCT_COLORS = {
   palladium: {
@@ -66,6 +66,19 @@ export const PRODUCT_COLORS = {
     darkBg: 'bg-pink-950/20',
     icon: Cpu,
     description: "Specialized clinical administration ERP focusing on patient outcomes and financial efficiency."
+  },
+  customSoftware: {
+    primary: 'rgb(148, 163, 184)',
+    secondary: 'rgb(100, 116, 139)',
+    gradient: 'from-slate-400 to-slate-600',
+    border: 'border-slate-300',
+    bg: 'bg-slate-100',
+    hover: 'hover:border-slate-400',
+    darkGradient: 'from-slate-500 to-zinc-700',
+    darkBorder: 'border-slate-500/30',
+    darkBg: 'bg-slate-900/30',
+    icon: Terminal,
+    description: "Bespoke software solutions engineered to perfectly match your unique business processes and competitive edge."
   }
 } as const;
 
@@ -75,4 +88,5 @@ export const PRODUCTS_LIST = [
   { id: 'sage200', name: 'Sage 200', category: 'Enterprise ERP', ...PRODUCT_COLORS.sage200 },
   { id: 'xactErp', name: 'Xact ERP', category: 'Manufacturing', ...PRODUCT_COLORS.xactErp },
   { id: 'medeilplus', name: 'Medeilplus', category: 'Healthcare', ...PRODUCT_COLORS.medeilplus },
+  { id: 'customSoftware', name: 'Custom Software', category: 'Bespoke Solutions', ...PRODUCT_COLORS.customSoftware },
 ];

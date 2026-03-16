@@ -16,6 +16,7 @@ import IQRetail from './components/IQRetail';
 import Sage200 from './components/Sage200';
 import XactERP from './components/XactERP';
 import Medeilplus from './components/Medeilplus';
+import CustomSoftware from './components/CustomSoftware';
 import PrivacyPolicyPage from './components/privacy/page';
 import CookiePolicyPage from './components/cookie-policy/page';
 import TermsOfServicePage from './components/terms/page';
@@ -129,6 +130,13 @@ const App: React.FC = () => {
                 <>
                   <SEO title="Medeilplus Healthcare ERP | Office Choice Solutions" description="Medeilplus: Specialized usage-based ERP for healthcare administration, patient management, and medical billing." />
                   <Medeilplus />
+                </>
+              } />
+
+              <Route path="/products/custom-software" element={
+                <>
+                  <SEO title="Custom Software Development | Office Choice Solutions" description="Expert bespoke software development tailored to your exact operational requirements in Kenya." />
+                  <CustomSoftware />
                 </>
               } />
 
