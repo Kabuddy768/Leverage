@@ -8,24 +8,25 @@ import Products from './components/Products';
 import Features from './components/Features';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
-import ProductsPage from './components/ProductsPage';
-import AboutPage from './components/AboutPage';
-import ContactPage from './components/ContactPage';
-import Palladium from './components/Palladium';
-import IQRetail from './components/IQRetail';
-import Sage200 from './components/Sage200';
-import XactERP from './components/XactERP';
-import Medeilplus from './components/Medeilplus';
-import CustomSoftware from './components/CustomSoftware';
-import PrivacyPolicyPage from './components/privacy/page';
-import CookiePolicyPage from './components/cookie-policy/page';
-import TermsOfServicePage from './components/terms/page';
-import PartnersPage from './components/PartnersPage';
-import FAQPage from './components/FAQPage';
 import ScrollToTop from './components/ScrollToTop';
 import SEO from './components/SEO';
 import WhatsAppButton from './components/WhatsAppButton';
-import NotFoundPage from './components/NotFoundPage';
+
+const ProductsPage = React.lazy(() => import('./components/ProductsPage'));
+const AboutPage = React.lazy(() => import('./components/AboutPage'));
+const ContactPage = React.lazy(() => import('./components/ContactPage'));
+const Palladium = React.lazy(() => import('./components/Palladium'));
+const IQRetail = React.lazy(() => import('./components/IQRetail'));
+const Sage200 = React.lazy(() => import('./components/Sage200'));
+const XactERP = React.lazy(() => import('./components/XactERP'));
+const Medeilplus = React.lazy(() => import('./components/Medeilplus'));
+const CustomSoftware = React.lazy(() => import('./components/CustomSoftware'));
+const PrivacyPolicyPage = React.lazy(() => import('./components/privacy/page'));
+const CookiePolicyPage = React.lazy(() => import('./components/cookie-policy/page'));
+const TermsOfServicePage = React.lazy(() => import('./components/terms/page'));
+const PartnersPage = React.lazy(() => import('./components/PartnersPage'));
+const FAQPage = React.lazy(() => import('./components/FAQPage'));
+const NotFoundPage = React.lazy(() => import('./components/NotFoundPage'));
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -41,7 +42,8 @@ const App: React.FC = () => {
           <Navbar />
 
           <main className="transition-opacity duration-500">
-            <Routes>
+            <React.Suspense fallback={<div className="min-h-screen bg-zinc-950 flex items-center justify-center text-zinc-400">Loading...</div>}>
+              <Routes>
               {/* Home Page */}
               <Route path="/" element={
                 <div className="animate-fade-in">
@@ -166,6 +168,7 @@ const App: React.FC = () => {
               <Route path="*" element={<NotFoundPage />} />
 
             </Routes>
+            </React.Suspense>
           </main>
 
           <Footer />

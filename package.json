@@ -24,9 +24,13 @@
   "devDependencies": {
     "@prerenderer/renderer-puppeteer": "^1.2.4",
     "@prerenderer/rollup-plugin": "^0.3.12",
+    "@tailwindcss/postcss": "^4.3.1",
     "@types/node": "^22.14.0",
     "@types/nodemailer": "^7.0.9",
     "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.1",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"
   },

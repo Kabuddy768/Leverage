@@ -11,15 +11,17 @@ const PARTNERS = [
         name: 'Saferpower Ltd',
         industry: 'Energy & Electrical Solutions',
         description: 'A leader in electrical safety and power management across East Africa. We implemented a unified financial system that streamlined their complex supply chain.',
+        image: '/images/safepower.png',
         icon: Shield,
         accent: 'from-blue-500 to-indigo-500',
         tags: ['Energy', 'Logistics', 'KRA Compliant']
     },
     {
         id: 'zeka',
-        name: 'Zeka Wire Products',
+        name: 'Izeka Wire Products',
         industry: 'Industrial Manufacturing',
         description: 'Specialists in high-tensile wire products for the construction sector. Our Xact ERP implementation optimized their production floors and reduced raw material waste by 18%.',
+        image: '/images/Izeka.jpeg',
         icon: Factory,
         accent: 'from-orange-500 to-red-500',
         tags: ['Manufacturing', 'ERP', 'Bespoke Workflows']
@@ -29,6 +31,7 @@ const PARTNERS = [
         name: 'AEA (Association of Evangelicals in Africa)',
         industry: 'Non-Profit & NGO',
         description: 'A continental organization requiring sophisticated multi-currency reporting and donor transparency. We provided a custom Sage 200 setup to manage their pan-African operations.',
+        image: '/images/aea.jpeg',
         icon: Globe,
         accent: 'from-emerald-500 to-teal-500',
         tags: ['NGO', 'Sage 200', 'Multi-Currency']
@@ -83,8 +86,13 @@ export default function PartnersPage() {
                             <div className="lg:col-span-5 relative overflow-hidden rounded-[2.8rem] min-h-[350px] bg-zinc-950 flex items-center justify-center">
                                 <div className={`absolute -top-32 -right-32 w-80 h-80 blur-[100px] opacity-20 bg-gradient-to-br ${partner.accent}`} />
                                 <div className="relative z-10 flex flex-col items-center gap-6">
-                                    <div className={`w-24 h-24 rounded-3xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform duration-700`}>
-                                        <partner.icon className="w-12 h-12 text-white" />
+                                    <div className="w-32 h-32 rounded-3xl bg-white flex items-center justify-center border border-white/10 p-4 group-hover:scale-110 transition-transform duration-700 overflow-hidden shadow-2xl">
+                                        <img 
+                                            src={partner.image} 
+                                            alt={`${partner.name} logo - Office Choice Solutions Partner`} 
+                                            className="w-full h-full object-contain"
+                                            loading="lazy"
+                                        />
                                     </div>
                                     <div className="text-center">
                                         <h3 className="text-3xl font-black tracking-tighter mb-1">{partner.name}</h3>

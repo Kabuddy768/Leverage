@@ -5,22 +5,22 @@ import { Link } from 'react-router-dom';
 
 const testimonials = [
   {
-    name: "James Mwangi",
-    role: "Operations Director, LogiTrans Kenya",
-    text: "Office Choice Solutions transformed our warehouse operations with Palladium. Their implementation team was thorough and understood our local tax needs perfectly.",
+    name: "Philip Mwenza",
+    role: "GM-Finance, Safer Power Ltd",
+    text: "Office Choice Solutions transformed our operations with Palladium. Their implementation team was thorough and understood our financial and local tax needs perfectly.",
     rating: 5
   },
   {
-    name: "Sarah Kimani",
-    role: "CFO, RetailHub East Africa",
-    text: "The transition to IQ Retail was seamless. We now have real-time visibility across all 15 branches. Truly the best value-added resellers in the region.",
+    name: "Jackson Adagala",
+    role: "FM, AEA",
+    text: "Palladium Premium implementation was a massive undertaking, but Office Choice handled it with expertise. Their support desk is responsive and professional.",
     rating: 5
   },
   {
-    name: "Robert Odhiambo",
-    role: "Managing Director, PharmaLink",
-    text: "Sage 200 implementation was a massive undertaking, but Office Choice handled it with expertise. Their support desk is responsive and professional.",
-    rating: 4
+    name: "Hezron Nyamboki",
+    role: "BDM, Shadracks & Sons Limited",
+    text: "The transition to Palladium Premium was seamless. We now have real-time visibility over our business. Truly the best value-added resellers in the region.",
+    rating: 5
   }
 ];
 
